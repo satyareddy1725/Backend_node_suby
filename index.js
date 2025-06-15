@@ -5,6 +5,9 @@ const vendorRoutes = require("./routes/vendorRoutes");
 const firmRoutes = require("./routes/firmRoutes");
 const productRoutes = require("./routes/productRoutes");
 const path = require("path");
+const cors = require("cors");
+app.use(cors());
+
 
 dotEnv.config();
 
