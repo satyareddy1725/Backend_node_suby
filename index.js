@@ -46,6 +46,17 @@ app.get("/login", (req, res) => {
   console.log("helo how r u ");
 });
 
+// For checking MongoDB connection
+app.get("/check-db", async (req, res) => {
+  try {
+    const vendorCount = await Vendor.countDocuments(); // Or any other model
+    res.status(200).json({ message: "MongoDB connected", vendorCount });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log("server started at 4000 port");
 });
