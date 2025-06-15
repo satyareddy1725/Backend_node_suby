@@ -34,6 +34,10 @@ app.get("/satya", (req, res) => {
   res.send("satya path your seeing");
 });
 
+app.get("/", (req, res) => {
+  res.send("welcome to Home Page");
+});
+
 app.get("/login", (req, res) => {
   console.log("helo how r u ");
 });
