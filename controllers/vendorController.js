@@ -69,7 +69,7 @@ const getVendorById = async (req, res) => {
     }
     res.status(200).json({ vendor });
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ error: err.message });
   }
 };
 
