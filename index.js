@@ -6,13 +6,14 @@ const firmRoutes = require("./routes/firmRoutes");
 const productRoutes = require("./routes/productRoutes");
 const path = require("path");
 const cors = require("cors");
-app.use(cors());
+
 
 
 dotEnv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 4000;
 
