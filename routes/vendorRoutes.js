@@ -5,7 +5,7 @@ const express = require("express");
 const router = express.Router();
 
 router.post("/register", vendorController.VendorRegister);
-router.get("/login", vendorController.VendorLogin);
+router.post("/login", vendorController.VendorLogin);
 
 router.get("/all-vendors", vendorController.getAllVendors);
 router.get("/:id", vendorController.getVendorById);

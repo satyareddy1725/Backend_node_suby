@@ -27,7 +27,7 @@ const VendorRegister = async (req, res) => {
 
 const VendorLogin = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
+  // console.log(email, password);
 
   try {
     const vendor = await Vendor.findOne({ email });
@@ -45,7 +45,7 @@ const VendorLogin = async (req, res) => {
     res.status(200).json({
       success: "vendor fetched sucessfully",
       token: token,
-    });
+    });0
   } catch (err) {
     res.status(500).json({ message: "server error" });
   }
