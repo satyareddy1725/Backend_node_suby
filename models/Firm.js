@@ -19,7 +19,7 @@ const firmSchema = new Schema({
     type: [
       {
         type: String,
-        enum: ["south-indian", "north-indian", "chinese", "bakery"],
+        enum: ["south-indian", "north-indian", "chineese", "bakery"],
       },
     ],
   },
