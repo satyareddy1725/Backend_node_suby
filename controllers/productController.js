@@ -17,9 +17,13 @@ const upload = multer({ storage: storage });
 // 1. Add a new product
 const addProduct = async (req, res) => {
   try {
-    const { productName, price, category, bestSeller, description } = req.body;
+    console.log(req.body);
+    const { productName, price, categories, bestseller, description } =
+      req.body;
+
     const image = req.file ? req.file.filename : undefined;
     const firmId = req.params.FirmId;
+    // console.log(firmId);
 
     // Check if the firm exists
     const firm = await Firm.findById(firmId);
@@ -31,12 +35,13 @@ const addProduct = async (req, res) => {
     const product = new Product({
       productName,
       price,
-      category,
+      category: categories,
       image,
-      bestSeller,
+      bestSeller: bestseller,
       description,
       firm: firmId, // store only the ID (reference)
     });
+    console.log(product);
 
     const savedProduct = await product.save();
 

@@ -18,6 +18,7 @@ const VendorRegister = async (req, res) => {
     const newVendor = new Vendor({ username, email, password: hashedPassword });
 
     await newVendor.save();
+
     res.status(201).json({ message: "Vendor registered successfully" });
   } catch (err) {
     console.error(err);
@@ -42,10 +43,14 @@ const VendorLogin = async (req, res) => {
       }
     );
 
+    const vendorId = vendor._id;
+
     res.status(200).json({
       success: "vendor fetched sucessfully",
       token: token,
-    });0
+      vendorId,
+    });
+    0;
   } catch (err) {
     res.status(500).json({ message: "server error" });
   }
@@ -62,13 +67,22 @@ const getAllVendors = async (req, res) => {
 
 const getVendorById = async (req, res) => {
   const vendorId = req.params.id;
+  console.log(vendorId);
   try {
     const vendor = await Vendor.findById(vendorId).populate("firm");
+    console.log(vendor);
+
     if (!vendor) {
       return res.status(400).json({ error: "Vendor Not Exist" });
     }
-    res.status(200).json({ vendor });
+    const venderFirmId = vendor?.firm[0]?._id;
+    if (!venderFirmId) {
+      return res.status(400).json({ error: "firm Not Exist" });
+    }
+
+    res.status(200).json({ vendor, venderFirmId });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: err.message });
   }
 };

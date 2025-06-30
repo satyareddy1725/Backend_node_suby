@@ -24,15 +24,15 @@ const productSchema = new Schema({
     type: String,
   },
   bestSeller: {
-    type: String,
+    type: Boolean,
   },
   description: {
     type: String,
   },
-  firm:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"Firm"
-  }
+  firm: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Firm",
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);
